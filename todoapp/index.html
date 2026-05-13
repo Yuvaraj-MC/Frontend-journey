@@ -4,69 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Form validation</title>
+
+    <style>
+        .nameError,
+        .gmailError,
+        .phoneError {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 
-
     <div>
-        <input type="checkbox" name="check" value="C++">C++
-        <input type="checkbox" name="check" value="Java">Java
-        <input type="checkbox" name="check" value="Python">Python
+        <form action="">
+            <input type="text" placeholder="Name" id="name">
+            <span class="nameError">Name must contains only letter</span><br>
+            <input type="text" placeholder="Email" id="email">
+            <span class="gmailError">Please provide the valid Gmail address</span><br>
+            <input type="text" placeholder="PhoneNo" id="phone">
+            <span class="phoneError">Phone number Must contains only 10 digits</span> <br>
+            <input type="submit" id="Submit">
+        </form>
     </div>
 
-    <h1 id="result"></h1>
-
-
     <script>
+        var submit = document.getElementById("Submit")
+        submit.addEventListener("click", function (event) {
+            event.preventDefault();
 
-        // This is basic level for understandinng how to handle checkbox in javascript
-        // var checkboxes = document.getElementsByName("check");
-        // // skill array is created
-        // skill = [];
+            var nameRegex = /^[a-zA-Z]+$/;
+            var emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
+            var phoneRegex = /^\d{10}$/;
 
-        // checkboxes[0].addEventListener("click", function () {
-        //     if (checkboxes[0].checked) {
-        //         console.log("Checked");
-        //         skill.push(checkboxes[0].value);
-        //         result.textContent = skill;
-        //     } else {
-        //         console.log("Unchecked");
-        //         // index find chesi skill array nundi remove cheyali
-        //         var index = skill.indexOf(event.target.value);//0
-        //         // zero index nundi 1 element remove cheyali
-        //         skill.splice(index, 1);
-        //         // skill array ni result lo display cheyali
-        //         result.textContent = skill;
-
-        //     }
-        // });  
-
-        var checkboxes = document.getElementsByName("check");
-        // skill array is created
-        skill = [];
-        for (count = 0; count < checkboxes.length; count++) {
-            checkboxes[count].addEventListener("click", function () {
-                if (this.checked) {
-                    console.log("Checked");
-                    skill.push(this.value);
-                    result.textContent = skill;
-                } else {
-                    console.log("Unchecked");
-                    // index find chesi skill array nundi remove cheyali
-                    var index = skill.indexOf(this.value);//0
-                    // zero index nundi 1 element remove cheyali
-                    skill.splice(index, 1);
-                    // skill array ni result lo display cheyali
-                    result.textContent = skill;
-
-                }
-            });
-
-        }
+            var nameInput = document.getElementById("name");
+            var emailInput = document.getElementById("email");
+            var phoneInput = document.getElementById("phone");
 
 
+            var validate = true;
+
+            if (nameRegex.test(nameInput.value) === false) {
+                validate = false;
+                document.querySelector(".nameError").style.display = "inline";
+            } else {
+                document.querySelector(".nameError").style.display = "none";
+            }
+
+            if (emailRegex.test(emailInput.value) === false) {
+                validate = false;
+                document.querySelector(".gmailError").style.display = "inline";
+            } else {
+                document.querySelector(".gmailError").style.display = "none";
+
+            }
+
+            if (phoneRegex.test(phoneInput.value) === false) {
+                validate = false;
+                document.querySelector(".phoneError").style.display = "inline";
+            } else {
+                document.querySelector(".phoneError").style.display = "none";
+            }
+
+            if (validate === true) {
+                alert("Form submitted successfully!");
+            }
+        });
     </script>
 </body>
 
