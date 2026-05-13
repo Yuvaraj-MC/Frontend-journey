@@ -4,48 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>radio</title>
+    <title>Checkout</title>
 </head>
 
 <body>
-    <!-- name =gender rendu sarlu endhuku echanuante male select chesthe naku male select avvali and female select female select avvali rendu select avvakudadhu -->
-    <!-- input ani thisukunte kachitanga value property use cheyyali appude input echina data ni get cheyyagalamu -->
-    <input type="radio" name="gender" value="Male">Male
-    <input type="radio" name="gender" value="Female">Female
-    <h1 id="result">Male/Female</h1>
+
+
+    <div>
+        <input type="checkbox" name="check" value="C++">C++
+        <input type="checkbox" name="check" value="Java">Java
+        <input type="checkbox" name="check" value="Python">Python
+    </div>
+
+    <h1 id="result"></h1>
+
 
     <script>
-        var radio = document.getElementsByName("gender")
-        // console.log(radio) ekkada radio lo two elements  array laga untadi first element male second element female  
 
-        var results = document.getElementById("result")
+        // This is basic level for understandinng how to handle checkbox in javascript
+        // var checkboxes = document.getElementsByName("check");
+        // // skill array is created
+        // skill = [];
 
-        // radio[0].addEventListener("click", function () {
-        //     results.textContent = event.target.value
-        // })
+        // checkboxes[0].addEventListener("click", function () {
+        //     if (checkboxes[0].checked) {
+        //         console.log("Checked");
+        //         skill.push(checkboxes[0].value);
+        //         result.textContent = skill;
+        //     } else {
+        //         console.log("Unchecked");
+        //         // index find chesi skill array nundi remove cheyali
+        //         var index = skill.indexOf(event.target.value);//0
+        //         // zero index nundi 1 element remove cheyali
+        //         skill.splice(index, 1);
+        //         // skill array ni result lo display cheyali
+        //         result.textContent = skill;
 
-        // radio[1].addEventListener("click", function () {
-        //     results.textContent = event.target.value
-        // })  we can also give event.target.value instead of radio[0].value and radio[1].value because event.target will give us the element that triggered the event and value property will give us the value of that element.
-   
-   
-        // radio[0].addEventListener("click", function () {
-        //     results.innerHTML = event.target.value
-        // })
+        //     }
+        // });  
 
-        // radio[1].addEventListener("click", function () {
-        //     results.innerHTML = event.target.value
-        // })   we can also use innerHTML instead of even.target.value because innerHTML will parse the HTML tags and render them as HTML elements while textContent will render them as plain text.
+        var checkboxes = document.getElementsByName("check");
+        // skill array is created
+        skill = [];
+        for (count = 0; count < checkboxes.length; count++) {
+            checkboxes[count].addEventListener("click", function () {
+                if (this.checked) {
+                    console.log("Checked");
+                    skill.push(this.value);
+                    result.textContent = skill;
+                } else {
+                    console.log("Unchecked");
+                    // index find chesi skill array nundi remove cheyali
+                    var index = skill.indexOf(this.value);//0
+                    // zero index nundi 1 element remove cheyali
+                    skill.splice(index, 1);
+                    // skill array ni result lo display cheyali
+                    result.textContent = skill;
 
+                }
+            });
 
-         for (var i = 0; i < radio.length; i++) {
-            radio[i].addEventListener("click", function () {
-                results.textContent = event.target.value
-            })
         }
-        
-   </script>
 
+
+    </script>
 </body>
 
 </html>
