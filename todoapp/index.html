@@ -1,60 +1,34 @@
-1. todo app
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>todo</title>
-    <!-- It is used to link the JavaScript file to the HTML document, allowing you to add
-    interactivity and functionality to your web page. -->
-    <!-- <script src="script.js" defer></script> -->
-
+    <title>radio</title>
 </head>
 
 <body>
-
-    <section>
-        <input type="text" placeholder="Enter your task" id="task">
-        <button id="btn">Add</button>
-        <br> <br>
-    </section>
-
-    <section>
-        <ol id="list">
-
-        </ol>
-    </section>
-
+    <!-- name =gender rendu sarlu endhuku echanuante male select chesthe naku male select avvali and female select female select avvali rendu select avvakudadhu -->
+    <!-- input ani thisukunte kachitanga value property use cheyyali appude input echina data ni get cheyyagalamu -->
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female
+    <h1 id="result">Male/Female</h1>
 
     <script>
+        var radio = document.getElementsByName("gender")
+        // console.log(radio) ekkada radio lo two elements  array laga untadi first element male second element female  
 
-        var input = document.getElementById("task");
-        var addbtn = document.getElementById("btn");
-        var list = document.getElementById("list");
+        var results = document.getElementById("result")
 
-        addbtn.addEventListener("click", () => {
-            let inpvalue = input.value;
-            console.log(inpvalue);
-
-            var li = document.createElement("li");
-            li.innerHTML = inpvalue;
-
-            var del = document.createElement("button");
-            del.innerHTML = "delete";
-
-            del.addEventListener("click", () => {
-                list.remove(li);
-            })
-
-            li.appendChild(del);
-            list.appendChild(li);
-            console.log(inpvalue)
+        radio[0].addEventListener("click", function () {
+            results.textContent = radio[0].value
         })
 
-
+        radio[1].addEventListener("click", function () {
+            results.textContent = radio[1].value
+        })
     </script>
+
 </body>
 
 </html>
