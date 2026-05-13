@@ -20,14 +20,31 @@
 
         var results = document.getElementById("result")
 
-        radio[0].addEventListener("click", function () {
-            results.textContent = radio[0].value
-        })
+        // radio[0].addEventListener("click", function () {
+        //     results.textContent = event.target.value
+        // })
 
-        radio[1].addEventListener("click", function () {
-            results.textContent = radio[1].value
-        })
-    </script>
+        // radio[1].addEventListener("click", function () {
+        //     results.textContent = event.target.value
+        // })  we can also give event.target.value instead of radio[0].value and radio[1].value because event.target will give us the element that triggered the event and value property will give us the value of that element.
+   
+   
+        // radio[0].addEventListener("click", function () {
+        //     results.innerHTML = event.target.value
+        // })
+
+        // radio[1].addEventListener("click", function () {
+        //     results.innerHTML = event.target.value
+        // })   we can also use innerHTML instead of even.target.value because innerHTML will parse the HTML tags and render them as HTML elements while textContent will render them as plain text.
+
+
+         for (var i = 0; i < radio.length; i++) {
+            radio[i].addEventListener("click", function () {
+                results.textContent = event.target.value
+            })
+        }
+        
+   </script>
 
 </body>
 
