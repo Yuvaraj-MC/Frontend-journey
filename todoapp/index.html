@@ -1,0 +1,60 @@
+1. todo app
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <!-- It is used to link the JavaScript file to the HTML document, allowing you to add
+    interactivity and functionality to your web page. -->
+    <!-- <script src="script.js" defer></script> -->
+
+</head>
+
+<body>
+
+    <section>
+        <input type="text" placeholder="Enter your task" id="task">
+        <button id="btn">Add</button>
+        <br> <br>
+    </section>
+
+    <section>
+        <ol id="list">
+
+        </ol>
+    </section>
+
+
+    <script>
+
+        var input = document.getElementById("task");
+        var addbtn = document.getElementById("btn");
+        var list = document.getElementById("list");
+
+        addbtn.addEventListener("click", () => {
+            let inpvalue = input.value;
+            console.log(inpvalue);
+
+            var li = document.createElement("li");
+            li.innerHTML = inpvalue;
+
+            var del = document.createElement("button");
+            del.innerHTML = "delete";
+
+            del.addEventListener("click", () => {
+                list.remove(li);
+            })
+
+            li.appendChild(del);
+            list.appendChild(li);
+            console.log(inpvalue)
+        })
+
+
+    </script>
+</body>
+
+</html>
