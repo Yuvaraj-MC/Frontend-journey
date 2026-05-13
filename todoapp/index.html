@@ -4,74 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form validation</title>
-
-    <style>
-        .nameError,
-        .gmailError,
-        .phoneError {
-            color: red;
-            display: none;
-        }
-    </style>
+    <title>Regex Test</title>
 </head>
 
 <body>
-
-    <div>
-        <form action="">
-            <input type="text" placeholder="Name" id="name">
-            <span class="nameError">Name must contains only letter</span><br>
-            <input type="text" placeholder="Email" id="email">
-            <span class="gmailError">Please provide the valid Gmail address</span><br>
-            <input type="text" placeholder="PhoneNo" id="phone">
-            <span class="phoneError">Phone number Must contains only 10 digits</span> <br>
-            <input type="submit" id="Submit">
-        </form>
-    </div>
-
     <script>
-        var submit = document.getElementById("Submit")
-        submit.addEventListener("click", function (event) {
-            event.preventDefault();
+        var regex1 = /\w/
+        console.log(regex1.test("adfjnj123"));//true
+        console.log(regex1.test("123") + " word regex");//true
 
-            var nameRegex = /^[a-zA-Z]+$/;
-            var emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
-            var phoneRegex = /^\d{10}$/;
+        var regex2 = /\d/
+        console.log(regex2.test("abc123") + " digit regex");//true
+        console.log(regex2.test("yuvi"));//false
 
-            var nameInput = document.getElementById("name");
-            var emailInput = document.getElementById("email");
-            var phoneInput = document.getElementById("phone");
+        var regex3 = /^\d/
+        console.log(regex3.test("123") + " start with digit regex");//true
+        console.log(regex3.test("abc123") + " start with digit regex");//false
+
+        // starting lo check cheyyali ante ^ and ending check cheyyali ante  $
+        var regex4 = /\d+$/
+        console.log(regex4.test("123") + " end with digit regex");//true
+        console.log(regex4.test("abc123") + " end with digit regex");//true
+        console.log(regex4.test("abc123abc") + " end with digit regex");//false
+
+        var regex5 = /^\d+$/
+        console.log(regex5.test("1234") + " start and end with digit regex");//true
+
+        var regex6 = /^\d+[a-zA-Z]+$/;
+        console.log(regex6.test("123abc") + " start with digit and end with letter regex");//true
+        console.log(regex6.test("123abc123") + " start with digit and end with letter regex");//false
+
+        // * and zero or more times
+        // + and one or more times
+        var regex7 = /\d+/
+        console.log(regex7.test("123") + " one or more digits regex is available..?");//true
+        console.log(regex7.test("abc123") + " one or more digits regex");//true
+
+        var regex8 = /\d*/
+        console.log(regex8.test("abc") + " zero or more digits regex is available..?");//true
+        console.log(regex8.test("abc123") + " zero or more digits regex");//true
+
+        //  character class
+        var regex9 = /[aeiou]/
+        console.log(regex9.test("hello") + " vowel regex  --->character class");//true
+        console.log(regex9.test("sky") + " vowel regex");//false
+
+        var regex10 = /[a-z]/
+        console.log(regex10.test("hELLO") + " lowercase letter regex");//true first letter lowercase lo vunte true vastudhi 
+        console.log(regex10.test("123") + " lowercase letter regex");//false
+
+        var regex11 = /[A-Z]/
+        console.log(regex11.test("Hello") + " uppercase letter regex");//true first letter uppercase lo vunte true vastudhi 
+        console.log(regex11.test("123") + " uppercase letter regex");//false
 
 
-            var validate = true;
+        var regex12 = /^[a-zA-Z]+$/;
+        console.log(regex12.test("Hello") + " only letters regex");//true
+        console.log(regex12.test("Hello123") + " only letters regex");//false
 
-            if (nameRegex.test(nameInput.value) === false) {
-                validate = false;
-                document.querySelector(".nameError").style.display = "inline";
-            } else {
-                document.querySelector(".nameError").style.display = "none";
-            }
+        var regex13 = /^\d{10}$/
+        console.log(regex13.test("1234567890") + " 10 digit number regex");//true
+        console.log(regex13.test("123456789") + " 10 digit number regex");//false
 
-            if (emailRegex.test(emailInput.value) === false) {
-                validate = false;
-                document.querySelector(".gmailError").style.display = "inline";
-            } else {
-                document.querySelector(".gmailError").style.display = "none";
+        var regex14 = /^\d+[a-zA-Z0-9]+\d$/;
+        console.log(regex14.test("12345jhbdhbhd67890") + " start with digit ,middle with letters and numbers and end with digit regex");//true
+        console.log(regex14.test("1234567890") + "start with digit and end with digit regex");//true
+        console.log(regex14.test("12345jhbdhbhd67890a") + " start with digit ,middle with letters and numbers and end with digit regex");//false
 
-            }
-
-            if (phoneRegex.test(phoneInput.value) === false) {
-                validate = false;
-                document.querySelector(".phoneError").style.display = "inline";
-            } else {
-                document.querySelector(".phoneError").style.display = "none";
-            }
-
-            if (validate === true) {
-                alert("Form submitted successfully!");
-            }
-        });
+        // * → 0 or more times (optional)
+        // + → 1 or more times (minimum one compulsory)
     </script>
 </body>
 
