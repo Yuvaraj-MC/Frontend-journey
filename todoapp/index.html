@@ -4,75 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form validation</title>
-
-    <style>
-        .nameError,
-        .gmailError,
-        .phoneError {
-            color: red;
-            display: none;
-        }
-    </style>
+    <title>practice</title>
 </head>
 
 <body>
-
-    <div>
-        <form action="">
-            <input type="text" placeholder="Name" id="name">
-            <span class="nameError">Name must contains only letter</span><br>
-            <input type="text" placeholder="Email" id="email">
-            <span class="gmailError">Please provide the valid Gmail address</span><br>
-            <input type="text" placeholder="PhoneNo" id="phone">
-            <span class="phoneError">Phone number Must contains only 10 digits</span> <br>
-            <input type="submit" id="Submit">
-        </form>
+    <input type="text" id="search">
+    <div class="container">
+        <h1>One</h1>
+        <h1>Two</h1>
+        <h1>Three</h1>
+        <h1>Four</h1>
+        <h1>Five</h1>
+        <h1>Six</h1>
+        <h1>Seven</h1>
+        <h1>Eight</h1>
+        <h1>Nine</h1>
+        <h1>Ten</h1>
     </div>
 
+
     <script>
-        var submit = document.getElementById("Submit")
-        submit.addEventListener("click", function (event) {
-            event.preventDefault();
 
-            var nameRegex = /^[a-zA-Z]+$/;
-            var emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
-            var phoneRegex = /^\d{10}$/;
+        var searchInput = document.getElementById('search');
+        var container = document.querySelector(".container");
+        var h1List = document.querySelectorAll("h1");
+        // console.log(h1List); list vunna h1 tags anni chudachu
+        searchInput.addEventListener("keyup", function (event) {
 
-            var nameInput = document.getElementById("name");
-            var emailInput = document.getElementById("email");
-            var phoneInput = document.getElementById("phone");
+            var enteredText = event.target.value.toUpperCase();
 
+            for (count = 0; count < h1List.length; count++) {
 
-            var validate = true;
+                if (h1List[count].textContent.toUpperCase().indexOf(enteredText) < 0) {
 
-            if (nameRegex.test(nameInput.value) === false) {
-                validate = false;
-                document.querySelector(".nameError").style.display = "inline";
-            } else {
-                document.querySelector(".nameError").style.display = "none";
+                    h1List[count].style.display = "none";
+
+                } else {
+
+                    h1List[count].style.display = "block";
+
+                }
             }
+        })
 
-            if (emailRegex.test(emailInput.value) === false) {
-                validate = false;
-                document.querySelector(".gmailError").style.display = "inline";
-            } else {
-                document.querySelector(".gmailError").style.display = "none";
-
-            }
-
-            if (phoneRegex.test(phoneInput.value) === false) {
-                validate = false;
-                document.querySelector(".phoneError").style.display = "inline";
-            } else {
-                document.querySelector(".phoneError").style.display = "none";
-            }
-
-            if (validate === true) {
-                alert("Form submitted successfully!");
-            }
-        });
+        // search input field ni select chestunna and container ni select chestunna andhulo unna h1 tags ni select chestunna
+        // querySelector All endhuku use chestunna ante container lo unna h1 tags anni select cheyyali and querySelector
+        // only first h1 tag ni select chestundi
+        // querySelector All endhuku use chestunna ante container lo unna h1 tags anni select cheyyali and querySelector
+        // only first h1 tag ni select chestundi
+        // h1List is an array of all the h1 tags in the container
+        // event.target.value endhuku use chestunna ante search input field lo user enter chese text ni access cheyyali and
+        // event.target.value lo user enter chese text untundhi
     </script>
+
+
 </body>
 
 </html>
